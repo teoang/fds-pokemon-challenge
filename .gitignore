@@ -1,0 +1,11 @@
+# Competition data: download it into data/, never commit it
+data/
+
+# Local run outputs
+**/outputs/local/
+
+# Python and OS files
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
