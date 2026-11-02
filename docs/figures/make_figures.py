@@ -156,17 +156,18 @@ def contributions(report):
     f.save()
 
 
+# Labels by configuration letter, so the script reads reports of any run.
 ABLATION_LABELS = {
-    'E final': 'E  final model',
-    'H final + P2 bench': 'H  final + P2 bench',
-    'F final - history': 'F  final without P1 history',
-    'C B + P1 history': 'C  B + P1 history',
-    'D C + P2 bench': 'D  C + P2 bench',
-    'I final, logistic': 'I  final, logistic regression',
-    'B state, hidden KOs': 'B  state with hidden knockouts',
-    'G final - hidden KOs': 'G  final without hidden knockouts',
-    'R loops-style reference': 'R  reference like earlier experiments',
-    'A state, naive': 'A  state at face value',
+    'E': 'E  final model',
+    'H': 'H  final + P2 bench',
+    'F': 'F  final without P1 history',
+    'C': 'C  B + P1 history',
+    'D': 'D  C + P2 bench',
+    'I': 'I  final, logistic regression',
+    'B': 'B  state with hidden knockouts',
+    'G': 'G  final without hidden knockouts',
+    'R': 'R  baseline: no correction, no history',
+    'A': 'A  state at face value',
 }
 
 
@@ -175,7 +176,8 @@ def ablation(report):
     res = sorted(report['results'].values(), key=lambda r: -r['acc'])
     f = Figure('ablation', 720, 112 + 30 * len(res) + 40, 'CV accuracy of each configuration',
                '5-fold × 3 repeats, seed 2026. Dot: mean accuracy; line: range of the three repeats',
-               'Dot plot sorted by accuracy: ' + ', '.join(f'{r["name"]} {r["acc"]:.4f}' for r in res) + '.')
+               'Dot plot sorted by accuracy: ' + ', '.join(
+                   f'{ABLATION_LABELS[r["name"].split()[0]].replace("  ", " ")} {r["acc"]:.4f}' for r in res) + '.')
     x = scale(0.670, 0.705, 300, 680)
     top, row_h = 88, 30
     bottom = top + row_h * len(res)
@@ -184,13 +186,14 @@ def ablation(report):
         f.text(x(t), bottom + 18, f'{t:.3f}', 'muted num', 12, 'middle')
     for k, r in enumerate(res):
         yc = top + k * row_h + row_h / 2
-        final = r['name'] == 'E final'
+        letter = r['name'].split()[0]
+        final = letter == 'E'
         cls = 'accent' if final else 'rest'
-        f.text(24, yc + 4.5, ABLATION_LABELS[r['name']], 'ink', 13, weight=600 if final else None)
+        f.text(24, yc + 4.5, ABLATION_LABELS[letter], 'ink', 13, weight=600 if final else None)
         lo, hi = min(r['repeat_acc']), max(r['repeat_acc'])
         f.line(x(lo), yc, x(hi), yc, f'{cls}-line', 2, 'round')
         f.dot(x(r['acc']), yc, cls)
-        if r['name'] in ('E final', 'R loops-style reference', 'A state, naive'):
+        if letter in ('E', 'R', 'A'):
             f.text(x(hi) + 10, yc + 4.5, f'{r["acc"]:.4f}', 'ink num', 12.5, weight=600 if final else None)
     f.text(x(0.6875), bottom + 38, 'CV accuracy', 'muted', 12, 'middle')
     f.save()

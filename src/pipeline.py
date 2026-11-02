@@ -39,7 +39,7 @@ ABLATION = [
     ('B state, hidden KOs', ['core', 'ko'], False, 'lgb'),
     ('C B + P1 history', ['core', 'ko'], True, 'lgb'),
     ('D C + P2 bench', ['core', 'ko', 'bench', 'p2sp'], True, 'lgb'),
-    ('R loops-style reference', ['core', 'naive', 'p1sp', 'it', 'mv'], False, 'lgb'),
+    ('R baseline', ['core', 'naive', 'p1sp', 'it', 'mv'], False, 'lgb'),
     ('F final - history', FINAL_GROUPS, False, 'lgb'),
     ('G final - hidden KOs', ['core', 'naive', 'p1sp', 'it', 'mv'], True, 'lgb'),
     ('H final + P2 bench', FINAL_GROUPS + ['bench', 'p2sp'], True, 'lgb'),
@@ -48,7 +48,7 @@ ABLATION = [
 
 # (label, config a, config b): paired difference b - a
 COMPARISONS = [
-    ('final vs loops-style reference', 'R loops-style reference', FINAL[0]),
+    ('final vs baseline', 'R baseline', FINAL[0]),
     ('P1 history (final minus F)', 'F final - history', FINAL[0]),
     ('hidden KOs (final minus G)', 'G final - hidden KOs', FINAL[0]),
     ('P2 bench (H minus final)', FINAL[0], 'H final + P2 bench'),

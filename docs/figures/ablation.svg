@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="452" viewBox="0 0 720 452" role="img" aria-labelledby="t d">
 <title id="t">CV accuracy of each configuration</title>
-<desc id="d">Dot plot sorted by accuracy: E final 0.6986, H final + P2 bench 0.6982, F final - history 0.6969, C B + P1 history 0.6961, D C + P2 bench 0.6939, I final, logistic 0.6933, B state, hidden KOs 0.6890, G final - hidden KOs 0.6871, R loops-style reference 0.6849, A state, naive 0.6753.</desc>
+<desc id="d">Dot plot sorted by accuracy: E final model 0.6986, H final + P2 bench 0.6982, F final without P1 history 0.6969, C B + P1 history 0.6961, D C + P2 bench 0.6939, I final, logistic regression 0.6933, B state with hidden knockouts 0.6890, G final without hidden knockouts 0.6871, R baseline: no correction, no history 0.6849, A state at face value 0.6753.</desc>
 <style>
 svg { font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
 .surface { fill: #fcfcfb; }
@@ -56,7 +56,7 @@ svg { font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-
 <text x="24.0" y="317.5" class="ink" font-size="13" text-anchor="start">G  final without hidden knockouts</text>
 <line x1="449.8" y1="313.0" x2="505.2" y2="313.0" class="rest-line" stroke-width="2" stroke-linecap="round"/>
 <circle cx="485.7" cy="313.0" r="5" class="rest ring" stroke-width="2"/>
-<text x="24.0" y="347.5" class="ink" font-size="13" text-anchor="start">R  reference like earlier experiments</text>
+<text x="24.0" y="347.5" class="ink" font-size="13" text-anchor="start">R  baseline: no correction, no history</text>
 <line x1="447.7" y1="343.0" x2="481.3" y2="343.0" class="rest-line" stroke-width="2" stroke-linecap="round"/>
 <circle cx="461.4" cy="343.0" r="5" class="rest ring" stroke-width="2"/>
 <text x="491.3" y="347.5" class="ink num" font-size="12.5" text-anchor="start">0.6849</text>

@@ -1,0 +1,5 @@
+# Tested with Python 3.12 and 3.13
+numpy>=2.1
+pandas>=2.3
+scikit-learn>=1.6
+lightgbm>=4.6
