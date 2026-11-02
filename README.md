@@ -20,6 +20,8 @@ Player 1's history across battles. It was called idea1 during development.
   Kaggle gave the same numbers as the local run fold by fold, and the same `submission.csv`, in
   4.3 minutes on 4 CPUs. `src/` is that script split into modules; the split has not been re-run.
 
+![Public leaderboard over the team's five submissions: v1 0.687, v2 0.695, v3 0.694, v5 CatBoost 0.697 and idea1 0.700. The ±0.012 noise whiskers of all five overlap, and idea1's public score matches its CV accuracy of 0.6986.](docs/figures/leaderboard.svg)
+
 Differences between configurations are paired comparisons on the same folds. The standard error is
 the Nadeau-Bengio corrected one: √((1/J + 0.25)·var(d)), with J = 15 folds.
 
@@ -55,6 +57,9 @@ The battle JSON is described in [docs/uml/pokemon-data-model.md](docs/uml/pokemo
    - It uses no labels.
    - **Symmetry check:** estimated P2 knockouts (visible plus hidden) per record range are 0.331,
      0.547 and 0.729, against 0.342, 0.580 and 0.764 for P1. In total that is 1.61 against 1.69.
+
+   ![Knockouts per battle by record range. Player 1, always visible: 0.34, 0.58, 0.76. Player 2 visible alone: 0.11, 0.18, 0.22; adding the estimated hidden knockouts brings Player 2 to 0.33, 0.55, 0.73.](docs/figures/ko_symmetry.svg)
+
 2. **Corrected state at record 30** (`src/features.py`). Expected Pokémon alive, expected HP,
    healthy and nearly fainted Pokémon, and statuses, all weighted by the probability of still being
    in play. On top: HP, status, boosts and effects of both active Pokémon, and Spikes on each side.
@@ -66,6 +71,8 @@ The battle JSON is described in [docs/uml/pokemon-data-model.md](docs/uml/pokemo
    `colsample_bytree` 0.4 and `reg_lambda` 2.
 
 ## Ablation (seed 2026)
+
+![CV accuracy of the ten configurations, sorted: E final model 0.6986 first, A state at face value 0.6753 last, the reference built like the earlier experiments at 0.6849.](docs/figures/ablation.svg)
 
 | configuration | features | CV | vs A (paired, ±SE) |
 |---|---:|---:|---:|
@@ -81,6 +88,8 @@ The battle JSON is described in [docs/uml/pokemon-data-model.md](docs/uml/pokemo
 | **E final** | **384** | **0.6986** | **+0.0233 ± 0.0050** |
 
 Contributions measured on the final model:
+
+![Gain in CV accuracy from each block, in percentage points: hidden-knockout correction +1.15 (±0.29), LightGBM instead of logistic regression +0.54 (±0.50), Player 1's history +0.17 (±0.35), Player 2's bench −0.04 (±0.35).](docs/figures/contributions.svg)
 
 | block | contribution |
 |---|---:|
@@ -196,5 +205,6 @@ On Kaggle the outputs go to `/kaggle/working`. Nothing is ever submitted.
 | `src/validation.py` | repeated CV and paired comparisons |
 | `src/pipeline.py` | configurations, ablation, final fit, outputs |
 | `outputs/kaggle/` | outputs of version 4 on Kaggle: `run.log`, `cv_report.json`, `cv_report.md`, `submission.csv`, `test_probabilities.csv`, `oof_predictions.csv`, `feature_importance.csv` |
+| `docs/figures/` | the README figures (SVG, light and dark) and `make_figures.py`, which rebuilds them from `outputs/kaggle/` |
 | `docs/uml/pokemon-data-model.md` | UML class diagram of the battle JSON |
 | `docs/exploration/train-first-500-flattened.xlsx` | the first 500 training battles flattened into three sheets (P1 team, timeline, P2 lead with the label), for exploration; it holds competition data, so remove it before making the repository public |
