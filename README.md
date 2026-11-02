@@ -1,3 +1,7 @@
+![Pikachu mascots marching at the Pikachu Outbreak parade in Yokohama](docs/figures/banner.jpg)
+
+<sub>Photo: ["Pikachu Parade"](https://commons.wikimedia.org/wiki/File:Pikachu_Parade_(14905092432).jpg) by Yoshikazu Takada, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped.</sub>
+
 # fds-pokemon-challenge
 Machine learning project for the FDS 2026/27 Kaggle challenge at Sapienza University of Rome: predicting Pokémon battle outcomes from the first 30 turns.
 
@@ -205,6 +209,6 @@ On Kaggle the outputs go to `/kaggle/working`. Nothing is ever submitted.
 | `src/validation.py` | repeated CV and paired comparisons |
 | `src/pipeline.py` | configurations, ablation, final fit, outputs |
 | `outputs/kaggle/` | outputs of version 4 on Kaggle: `run.log`, `cv_report.json`, `cv_report.md`, `submission.csv`, `test_probabilities.csv`, `oof_predictions.csv`, `feature_importance.csv` |
-| `docs/figures/` | the README figures (SVG, light and dark) and `make_figures.py`, which rebuilds them from `outputs/kaggle/` |
+| `docs/figures/` | the four README charts (SVG, light and dark), `make_figures.py`, which rebuilds them from `outputs/kaggle/`, and the banner photo (CC BY 2.0, credited at the top) |
 | `docs/uml/pokemon-data-model.md` | UML class diagram of the battle JSON |
 | `docs/exploration/train-first-500-flattened.xlsx` | the first 500 training battles flattened into three sheets (P1 team, timeline, P2 lead with the label), for exploration; it holds competition data, so remove it before making the repository public |
