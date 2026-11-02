@@ -197,4 +197,4 @@ On Kaggle the outputs go to `/kaggle/working`. Nothing is ever submitted.
 | `src/pipeline.py` | configurations, ablation, final fit, outputs |
 | `outputs/kaggle/` | outputs of version 4 on Kaggle: `run.log`, `cv_report.json`, `cv_report.md`, `submission.csv`, `test_probabilities.csv`, `oof_predictions.csv`, `feature_importance.csv` |
 | `docs/uml/pokemon-data-model.md` | UML class diagram of the battle JSON |
-| `builded dataset for exploration/` | flattened dataset (Excel) for exploration |
+| `docs/exploration/train-first-500-flattened.xlsx` | the first 500 training battles flattened into three sheets (P1 team, timeline, P2 lead with the label), for exploration; it holds competition data, so remove it before making the repository public |
