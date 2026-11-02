@@ -1,0 +1,45 @@
+[    0.0s] data /kaggle/input/competitions/fds-pokemon-battles-prediction-2026  output /kaggle/working  cpus 4
+[    0.0s] python 3.13.15  lightgbm 4.6.0  scikit-learn 1.6.1  pandas 2.3.3  numpy 2.1.3
+[    9.7s] 10000 train battles, 5000 test battles, P1 win rate 0.500
+[   35.1s] species 247, pool teams 7538, vocab: 106 species, 14 items, 125 moves
+[   35.1s] hidden-KO calibration: {'scale': 1.1223313291016574, 'p2_events': 58750, 'p1_events': 42241, 'mean': 0.2810042553191495, 'sd': 0.3516494985840661}
+[   44.1s] static features: 632 columns; expected hidden P2 KOs per battle 1.10, visible P2 KOs 0.50, visible P1 KOs 1.69
+[   45.8s] 15 folds (5-fold x 3 repeats); history encodings ready
+[   59.0s] A state, naive                     acc 0.6753 (repeats 0.6757, 0.6755, 0.6747) features 132
+[   74.3s] B state, hidden KOs                acc 0.6890 (repeats 0.6879, 0.6889, 0.6902) features 134
+[   90.1s] C B + P1 history                   acc 0.6961 (repeats 0.6966, 0.6958, 0.6958) features 138
+[  117.7s] D C + P2 bench                     acc 0.6939 (repeats 0.6937, 0.6972, 0.6907) features 360
+[  140.6s] R loops-style reference            acc 0.6849 (repeats 0.6867, 0.6836, 0.6843) features 378
+[  164.8s] F final - history                  acc 0.6969 (repeats 0.6968, 0.6977, 0.6963) features 380
+[  188.4s] G final - hidden KOs               acc 0.6871 (repeats 0.6889, 0.6886, 0.6838) features 382
+[  226.1s] H final + P2 bench                 acc 0.6982 (repeats 0.7008, 0.6966, 0.6972) features 606
+[  231.5s] I final, logistic                  acc 0.6933 (repeats 0.6928, 0.6929, 0.6941) features 384
+[  256.1s] E final                            acc 0.6986 (repeats 0.6984, 0.7004, 0.6971) features 384
+
+| config | features | CV accuracy | vs A (paired, ±SE) |
+|---|---:|---:|---:|
+| A state, naive | 132 | 0.6753 ± 0.0004 | +0.0000 ± 0.0000 |
+| B state, hidden KOs | 134 | 0.6890 ± 0.0009 | +0.0137 ± 0.0046 |
+| C B + P1 history | 138 | 0.6961 ± 0.0004 | +0.0208 ± 0.0040 |
+| D C + P2 bench | 360 | 0.6939 ± 0.0027 | +0.0186 ± 0.0045 |
+| R loops-style reference | 378 | 0.6849 ± 0.0013 | +0.0096 ± 0.0052 |
+| F final - history | 380 | 0.6969 ± 0.0006 | +0.0216 ± 0.0046 |
+| G final - hidden KOs | 382 | 0.6871 ± 0.0023 | +0.0118 ± 0.0046 |
+| H final + P2 bench | 606 | 0.6982 ± 0.0019 | +0.0229 ± 0.0040 |
+| I final, logistic | 384 | 0.6933 ± 0.0006 | +0.0180 ± 0.0055 |
+| E final | 384 | 0.6986 ± 0.0014 | +0.0233 ± 0.0050 |
+
+[  256.1s] final vs loops-style reference: +0.0138 ± 0.0035 (corrected SE)
+[  256.1s] P1 history (final minus F): +0.0017 ± 0.0035 (corrected SE)
+[  256.1s] hidden KOs (final minus G): +0.0115 ± 0.0029 (corrected SE)
+[  256.1s] P2 bench (H minus final): -0.0004 ± 0.0035 (corrected SE)
+[  256.1s] LightGBM vs logistic (final minus I): +0.0054 ± 0.0050 (corrected SE)
+[  256.1s] final model: E final (CV 0.6986)
+[  258.2s] submission.csv: 5000 rows, predicted P1 win rate 0.508
+[  258.2s] done; nothing was submitted
+/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __script__.ipynb to html
+[NbConvertApp] Writing 450267 bytes to __results__.html
