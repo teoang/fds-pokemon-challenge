@@ -1,0 +1,9 @@
+\begin{abstract}
+We predict whether Player~1 wins a Gen~2 OU Pok\'emon battle from its first 30 recorded turns.
+The key observation is that the battle log hides most of Player~2's knockouts: a fainted
+Player~2 Pok\'emon looks like an ordinary switch. Using Player~1's always-visible knockouts as a
+control group, a classifier estimates which Player~2 switches were knockouts, and the corrected
+game state feeds a LightGBM model together with an out-of-fold encoding of Player~1's team history.
+The model reaches 0.699 accuracy in repeated cross-validation, 0.700 on the public leaderboard and
+0.683 on the private one.
+\end{abstract}
