@@ -2,27 +2,32 @@
 \label{sec:approaches}
 
 \paragraph{Feature engineering.}
-A first model on the state at turn 30 taken at face value (Pok\'emon alive and their HP, statuses,
-active Pok\'emon, boosts, Spikes) reached 0.675. Adding Player~1's species and items and the
-difference of move counts between the players gave a baseline of 0.685. We then added two blocks.
-\emph{Hidden knockouts}: for every Pok\'emon that leaves and never returns (a ``vanishing''), a
-LightGBM classifier separates Player~2's events from Player~1's using only the event description
-(HP before leaving, last HP drop, whether the replacement entered unhurt, move powers, the
-opponent's HP drop). Since Player~1's vanishings are all real switches, the density ratio gives
-$P(\mathrm{KO}\mid x)=1-c\,(1-q)/q$, with $q$ the classifier output and $c$ fixing the total to
-the observed excess. No labels are used; with these estimates Player~2 loses as many Pok\'emon as
-Player~1 (1.61 vs.\ 1.69 per battle). The state features are then
-recomputed weighting each Pok\'emon by its probability of still being alive.
-\emph{Player~1's history}: the smoothed win rate of Player~1's exact team, as a target encoding
-computed out-of-fold inside each training fold.
-We kept a block only if it improved the paired CV accuracy. Player~2's bench estimated from the team pool, extra state features
-(sleep counters, matchups, HP trajectories) and a damage formula were within noise and dropped.
+We started from the state at turn 30 taken at face value: Pok\'emon alive and their HP, statuses,
+the active Pok\'emon, boosts and Spikes. This scored 0.675. Adding Player~1's species and items and
+the difference of move counts between the players gave a baseline of 0.685.
+
+This state still counts Player~2's hidden knockouts as alive. How can we find them? Player~1's
+knockouts are always visible, so every Player~1 Pok\'emon that leaves and never comes back (a
+``vanishing'') is a real switch. If both players switch alike, the extra vanishings of Player~2 are
+the hidden knockouts. A LightGBM classifier separates Player~2's vanishings from Player~1's using
+only the event (HP before leaving, whether the replacement entered unhurt, move powers). With $q$ its output, the share of real switches among Player~2's
+events is $(1-q)/q$, so
+\[
+P(\mathrm{KO}\mid x)=1-c\,\frac{1-q}{q},
+\]
+where $c$ makes the total match the observed excess. No labels are used, and Player~2 now loses as
+many Pok\'emon as Player~1 (1.61 vs.\ 1.69 per battle). We recompute the state weighting each
+Pok\'emon by its probability of being alive.
+
+What about Player~1's identity? We add the smoothed win rate of Player~1's exact team, as a target
+encoding computed out-of-fold inside each training fold.
 
 \paragraph{Models.}
-LightGBM with shallow trees was our final learner. Logistic regression was 0.5 points worse;
-XGBoost, CatBoost, seed bagging and blends all stayed within $\pm0.003$ of LightGBM.
+Our learner is LightGBM with shallow trees; logistic regression was 0.5 points worse, and XGBoost,
+CatBoost and blends stayed within $\pm0.003$.
 
 \paragraph{Validation.}
-Every configuration was scored on the same stratified 5-fold CV repeated three times, and
-configurations were compared through paired fold differences with the Nadeau--Bengio corrected
-standard error~\cite{nadeau2003}. Choices were confirmed on a second seed.
+With differences this small, how do we know a block really helps? Every configuration uses the same
+stratified 5-fold CV repeated three times, and we compare paired fold differences with the
+Nadeau--Bengio corrected standard error~\cite{nadeau2003}, keeping a block only if it helps. This
+dropped Player~2's estimated bench, extra state features and a damage formula.

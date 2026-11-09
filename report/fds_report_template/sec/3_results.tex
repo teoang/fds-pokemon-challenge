@@ -2,7 +2,7 @@
 \label{sec:results}
 
 \begin{table}[h!]
-  \caption{CV accuracy (5-fold $\times$ 3) and paired gain over the baseline ($\pm$ corrected SE).}
+  \caption{CV accuracy and paired gain over the baseline.}
   \label{tab:results}
   \centering
   \small
@@ -19,9 +19,8 @@
   \end{tabular}
 \end{table}
 
-Table~\ref{tab:results} summarises the ablation. Almost all of the gain comes from the hidden-knockout
+Which block matters? Table~\ref{tab:results} answers: almost all of the gain comes from the hidden-knockout
 correction ($+0.012\pm0.003$); the history adds $+0.002\pm0.004$ once species are present.
 It scored 0.700 on the public and 0.683 on the private leaderboard. The private score is 1.5 points
-below CV (two standard errors of a 3,500-battle split), and our best submissions lie within noise
-of each other there. Code:
+below CV, about two standard errors of a 3,500-battle split. Code at
 \url{https://github.com/teoang/fds-pokemon-challenge}.
