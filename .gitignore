@@ -1,5 +1,7 @@
 # Competition data: download it into data/, never commit it
 data/
+/docs/exploration/train-first-500-flattened.xlsx
+/builded dataset for exploration/pokemon_json_spacchettato.xlsx
 
 # Local run outputs
 **/outputs/local/

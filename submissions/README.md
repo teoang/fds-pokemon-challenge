@@ -94,5 +94,7 @@ To obtain a local original again, use its `submission_ref` with:
 kaggle competitions submission-download SUBMISSION_REF -p /local/reference/folder
 ```
 
-Before making the repository public, review the competition-data spreadsheet already tracked
-under `docs/exploration/`; this reorganization does not publish additional competition data.
+The old exploration spreadsheet is unused by these runners and is excluded from the current
+tracked files. Copies still exist in older Git commits. Removing it from the current tree does
+not remove those historical copies; publication without the spreadsheet needs a separate
+history-cleanup decision. Keep the repository private until that is resolved.

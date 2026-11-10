@@ -105,4 +105,3 @@ pipeline.run(ablation=False)
 | `outputs/kaggle/` | the run on Kaggle that produced the submission |
 | `docs/figures/` | the figures, and `make_figures.py` to redraw them |
 | `docs/uml/` | UML diagram of the battle JSON |
-| `docs/exploration/` | the first 500 training battles as a spreadsheet (competition data: remove before the repository goes public) |
