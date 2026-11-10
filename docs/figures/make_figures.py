@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Rebuild the README figures from the saved outputs. No model is re-run.
+"""Rebuild the README figures from a local cross-validation report.
 
 Usage, from the repository root:
+    python run.py
     python docs/figures/make_figures.py
 
-The CV numbers come from outputs/kaggle/cv_report.json. The knockout counts
+The CV numbers come from outputs/local/cv_report.json. This figure script does
+not fit models. The knockout counts
 and the public leaderboard scores are copied below, with their source. Each
 figure is an SVG that follows the reader's light or dark theme. Only the
 Python standard library is needed.
@@ -258,7 +260,7 @@ def leaderboard():
 
 
 def main():
-    report = json.loads((ROOT / 'outputs' / 'kaggle' / 'cv_report.json').read_text())
+    report = json.loads((ROOT / 'outputs' / 'local' / 'cv_report.json').read_text())
     contributions(report)
     ablation(report)
     symmetry()

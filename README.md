@@ -55,7 +55,7 @@ are paired on the same folds, and ± is the corrected standard error.
 - **What else was tried.** More state features, XGBoost, CatBoost and blends all stayed within
   noise.
 
-The full numbers are in [outputs/kaggle/cv_report.md](outputs/kaggle/cv_report.md).
+Run `python run.py` to regenerate the full cross-validation and ablation results in `outputs/local/`.
 
 ## Limits
 
@@ -101,6 +101,5 @@ pipeline.run(ablation=False)
 | `submissions/03_turn31_v2/` | turn-31 V2 approach, original source and reference metadata |
 | `submission_tools/` | shared path adaptation, execution and CSV verification |
 | `run.py`, `src/` | compatibility entry points for the original first pipeline |
-| `outputs/kaggle/` | the run on Kaggle that produced the submission |
 | `docs/figures/` | the figures, and `make_figures.py` to redraw them |
 | `docs/uml/` | UML diagram of the battle JSON |
