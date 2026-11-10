@@ -3,6 +3,7 @@
 import csv
 import json
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
 import zipfile
@@ -40,12 +41,21 @@ class RunnerTests(unittest.TestCase):
             launchers.append((directory / 'run.py').read_bytes())
         self.assertEqual(len(set(launchers)), 1)
 
-    def test_complete_sources_pass_and_missing_v2_fails_before_execution(self):
-        for name in SUBMISSIONS[:2]:
+    def test_complete_sources_pass_preflight(self):
+        for name in SUBMISSIONS:
             self.assertTrue(preflight(ROOT / 'submissions' / name, self.data)['ready_to_execute'])
         check = preflight(ROOT / 'submissions' / SUBMISSIONS[2], self.data)
+        self.assertIn('72/5000', check['reproduction_note'])
+
+    def test_restored_source_still_has_to_match_its_recorded_hash(self):
+        altered = self.root / 'altered-v2'
+        shutil.copytree(ROOT / 'submissions' / SUBMISSIONS[2], altered,
+                        ignore=shutil.ignore_patterns('outputs', '__pycache__'))
+        with (altered / 'code/cell_06.py').open('a') as stream:
+            stream.write('\n# Changed after source verification\n')
+        check = preflight(altered, self.data)
         self.assertFalse(check['ready_to_execute'])
-        self.assertIn('load_test_data', ' '.join(check['errors']))
+        self.assertIn('cell_06.py', ' '.join(check['errors']))
 
     def test_explicit_input_does_not_fall_back_to_another_dataset(self):
         with self.assertRaises(FileNotFoundError):

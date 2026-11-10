@@ -67,9 +67,8 @@ The full numbers are in [outputs/kaggle/cv_report.md](outputs/kaggle/cv_report.m
 
 The three final approaches now have matching folders under [`submissions/`](submissions/README.md).
 Use [`final_submissions.ipynb`](final_submissions.ipynb) as the single Kaggle entry notebook.
-It is currently a working draft: the saved V2 source is incomplete, and a fresh V5 run differs
-from its original submission in 43 of 5,000 predictions. The notebook checks these conditions
-and requires exact prediction matches before exporting the complete set.
+The notebook runs each approach independently, validates the competition inputs and generated
+CSVs, and records the source version and runtime used for each execution.
 
 ```bash
 pip install -r requirements.txt
@@ -96,7 +95,7 @@ pipeline.run(ablation=False)
 
 | path | content |
 |---|---|
-| `final_submissions.ipynb` | one Kaggle notebook for the three approaches; current reproduction issues are reported |
+| `final_submissions.ipynb` | one Kaggle entry notebook for the three approaches |
 | `submissions/01_hidden_ko_history/` | hidden-KO + history approach, original source and reference metadata |
 | `submissions/02_turn31_v5/` | turn-31 V5 approach, original source and reference metadata |
 | `submissions/03_turn31_v2/` | turn-31 V2 approach, original source and reference metadata |

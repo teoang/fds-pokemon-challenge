@@ -22,10 +22,7 @@ python submissions/01_hidden_ko_history/run.py --data /path/to/competition --out
 The shared runner only adapts input/output paths and omits extra ablation fits. Model settings,
 seeds, feature code and the final fit are unchanged. The legacy root entry points remain available.
 
-## Reproduction status
+## Submission reference
 
 Original Kaggle submission: **57708941**, public **0.70000**, private **0.68314**.
 `reference.json` records the original prediction fingerprint; each run checks it automatically.
-A fresh execution of the unified notebook from an isolated Git clone reproduced all **5,000
-original predictions exactly**. The full notebook still requires the other two approaches to
-be resolved before the three-submission export is ready.

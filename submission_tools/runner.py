@@ -91,11 +91,15 @@ def preflight(approach, data):
         errors.append('Original source archive changed or missing')
     if source['missing']:
         errors.append('Incomplete original source: ' + '; '.join(source['missing']))
+    reference = json.loads((approach / 'reference.json').read_text())
+    comparison = reference.get('local_check', {})
+    note = ''
+    if comparison and not comparison['exact_reproduction']:
+        note = (f'Previous fresh run differed in {comparison["different_predictions"]}/'
+                f'{comparison["total_predictions"]} predictions; exact reproduction '
+                'has not been established')
     return {'submission': approach.name, 'ready_to_execute': not errors, 'errors': errors,
-            'data': str(data),
-            'reproduction_note': ('Previous fresh run differed in 43/5000 predictions; '
-                                  'original environment still needs to be recovered')
-            if approach.name == '02_turn31_v5' else ''}
+            'data': str(data), 'reproduction_note': note}
 
 
 def _runtime():
@@ -141,7 +145,7 @@ def _execute(approach, source, data, artifacts):
     namespace = {'__name__': '__main__'}
     for cell in source['files']:
         path = approach / 'code' / cell['path']
-        print(f'Running original cell {cell["cell_index"]}', flush=True)
+        print(f'Running source cell {cell["cell_index"]}', flush=True)
         exec(compile(path.read_text(), str(path), 'exec'), namespace)
         if cell['cell_index'] == source['config_cell']:
             # Only filesystem locations are adapted. Model code is executed verbatim.
