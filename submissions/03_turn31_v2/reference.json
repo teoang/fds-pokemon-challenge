@@ -1,0 +1,13 @@
+{
+  "competition": "fds-pokemon-battles-prediction-2026",
+  "submission_ref": 57675780,
+  "filename": "submission_v2_26_10.csv",
+  "public_score": 0.69466,
+  "private_score": 0.67485,
+  "rows": 5000,
+  "p1_wins": 2540,
+  "file_sha256": "487cec30dbef0dc2bfc4480697772b648cbb141ddb23852325875999ccf074b7",
+  "predictions_sha256": "ca348f84ba5ece1cfb87492bcfaa4fce4f73084e8595161fe80c0b1971bbafb7",
+  "comparison": "SHA-256 of sorted battle_id,player_won lines, without a header",
+  "download_command": "kaggle competitions submission-download 57675780"
+}

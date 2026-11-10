@@ -1,0 +1,13 @@
+{
+  "competition": "fds-pokemon-battles-prediction-2026",
+  "submission_ref": 57708941,
+  "filename": "idea1_v4_hiddenKO_history.csv",
+  "public_score": 0.7,
+  "private_score": 0.68314,
+  "rows": 5000,
+  "p1_wins": 2541,
+  "file_sha256": "c1d12cc0eacb506a29c5c0f9ddad7abf419a9d8acccc8703334b2a1d5633f9f4",
+  "predictions_sha256": "b701d9bae48c0432095b7e42d1e8889c3dcd00a6f5ac3a40e83c687e18c98fbb",
+  "comparison": "SHA-256 of sorted battle_id,player_won lines, without a header",
+  "download_command": "kaggle competitions submission-download 57708941"
+}

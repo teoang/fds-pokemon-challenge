@@ -9,3 +9,8 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+
+# Per-submission outputs and locally downloaded reference CSVs
+/submissions/*/outputs/*
+!/submissions/*/outputs/.gitkeep
+.ipynb_checkpoints/

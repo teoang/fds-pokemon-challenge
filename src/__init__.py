@@ -1,16 +1,15 @@
-"""FDS Pokémon Battles 2026: predict the winner from the first 30 recorded turns.
+"""Compatibility imports for the original hidden-KO pipeline.
 
-The approach rebuilds what the timeline hides and gives the model Player 1's
-history:
-
-- `hidden_ko`: Player 2's knockouts are hidden in the data. Player 1's
-  vanishings act as a control group for a classifier that estimates which
-  Player 2 vanishings were knockouts.
-- `features`: the state at the last record, corrected for those knockouts,
-  plus Player 1's species and items and the move counts of both players.
-- `history`: an out-of-fold target encoding of Player 1's exact team.
-- `pipeline`: repeated cross-validation, the ablation and the final fit.
-
-Run `python run.py` from the repository root, or call `src.pipeline.run()`
-from a notebook.
+The unchanged implementation now lives in submissions/01_hidden_ko_history/code.
+Existing ``from src import pipeline`` calls continue to use the repository's
+original data and output locations.
 """
+
+from pathlib import Path
+
+_root = Path(__file__).resolve().parents[1]
+__path__ = [str(_root / 'submissions/01_hidden_ko_history/code/src')]
+
+from . import data as _data
+
+_data.REPO_ROOT = _root

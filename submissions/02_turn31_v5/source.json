@@ -1,0 +1,44 @@
+{
+  "kind": "notebook_cells",
+  "original": "original/notebook.ipynb",
+  "original_sha256": "0e12556121713b8a7e7f78c5a4c210d6d004a1e3bed14645832f690214d3e111",
+  "config_cell": 2,
+  "files": [
+    {
+      "cell_index": 2,
+      "path": "cell_02.py",
+      "sha256": "7d955844ff9002dd52868b4180ddfda8febdb8bf7c3174ec7dde78e86dae15bc"
+    },
+    {
+      "cell_index": 3,
+      "path": "cell_03.py",
+      "sha256": "d527d8f06b9bfafd4ffa9fc21e0c8fc85a66659446d7c1024cefec284274ca75"
+    },
+    {
+      "cell_index": 4,
+      "path": "cell_04.py",
+      "sha256": "9e35896fac6d5cc29f098c8f994f3fb94499b746ca494cfa80e36f2d7579b827"
+    },
+    {
+      "cell_index": 6,
+      "path": "cell_06.py",
+      "sha256": "edf4238f12a232c9ca1a54ed770f3c0853159b8d3b7345c87fa07f553efdf11c"
+    },
+    {
+      "cell_index": 8,
+      "path": "cell_08.py",
+      "sha256": "36161a063137f7a24e204f81727c63619c61d78a1b02ad96ef66f5672589e21d"
+    },
+    {
+      "cell_index": 18,
+      "path": "cell_18.py",
+      "sha256": "62d3d039764aecc57d3c8eadec21e790a29b563e7048f4c12ebeda625dc22e7e"
+    },
+    {
+      "cell_index": 22,
+      "path": "cell_22.py",
+      "sha256": "9bb9c336e22fa9aa0c1ef8c9a679c337a12013166794607a4a1ff0f2b06a3131"
+    }
+  ],
+  "missing": []
+}

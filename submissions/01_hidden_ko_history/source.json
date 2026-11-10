@@ -1,0 +1,58 @@
+{
+  "kind": "python_project",
+  "entrypoint": "run.py",
+  "files": [
+    {
+      "path": "src/__init__.py",
+      "sha256": "5c90b7050e9f20946eb8e9923e0aa7d42eeadb0a12b467802df1ea3177d8d96f"
+    },
+    {
+      "path": "src/config.py",
+      "sha256": "355d98a4c1d88fd4cde1bb274d4b9ffed2cf1662f6ed7c4826e160bb6f0b2994"
+    },
+    {
+      "path": "src/data.py",
+      "sha256": "44f20d9dcbc1fb9219c35e00bf829f3ccbf95bf5b143ea72c599d730623e855b"
+    },
+    {
+      "path": "src/features.py",
+      "sha256": "5f9828faf1d1e64f58a590af3eac21d2f704add3e2c94dfbed960b85cf8619cd"
+    },
+    {
+      "path": "src/hidden_ko.py",
+      "sha256": "6704cf0dfef12561dac4a7df2abab3345f5b2dd68a10ea1a6281919bc6222c81"
+    },
+    {
+      "path": "src/history.py",
+      "sha256": "76eb5b18338e62a02f5b2e66c4ddf3e3c6075bd6f923e7e2919f2f3ef8987e91"
+    },
+    {
+      "path": "src/models.py",
+      "sha256": "693ff4e3fa5e970c8b70e490033293d666292740012ea8f0cf852e0a3f25505c"
+    },
+    {
+      "path": "src/pipeline.py",
+      "sha256": "c18afe3e820b87167ca418bc9c9c59de74ea145294ba5837219b84b929abfe33"
+    },
+    {
+      "path": "src/team_pool.py",
+      "sha256": "5e2e33bb69ed8ebf02fccd1ddff058cdc759c05f3a831a5d833f5c698081614b"
+    },
+    {
+      "path": "src/utils.py",
+      "sha256": "f9470bf074c53b1855d9a53793057cfdddc259dff52e9b857bc72d5972a14427"
+    },
+    {
+      "path": "src/validation.py",
+      "sha256": "26f5ca2dc29fdc7a2abe21d035057bfad58df2f16457b7e8344d64f356d02f33"
+    },
+    {
+      "path": "run.py",
+      "sha256": "91913d732d2a8fcd0e0a39bf32e4d1c6f4aa2e76c81cc27ecdc493e571c6842e"
+    }
+  ],
+  "original": "original/fds-pokemon-idea1.py",
+  "original_sha256": "66de2ee5989d2f9def2313fd30717b94e22f39cb34012000d53157c8a163ad0d",
+  "original_kernel": "matteoangeloro/fds-pokemon-idea1/4",
+  "missing": []
+}

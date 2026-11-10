@@ -28,15 +28,17 @@ loses as many Pokémon as P1 does:
 
 ## How it works
 
-1. **Hidden knockouts** (`src/hidden_ko.py`). For every Pokémon that leaves and never comes back, a
+The implementation below is in `submissions/01_hidden_ko_history/code/src/`.
+
+1. **Hidden knockouts** (`hidden_ko.py`). For every Pokémon that leaves and never comes back, a
    classifier compares P2's events with P1's and estimates the probability that it was a knockout.
    It uses no labels.
-2. **State at turn 30** (`src/features.py`). Pokémon alive, HP, statuses, the active Pokémon and
+2. **State at turn 30** (`features.py`). Pokémon alive, HP, statuses, the active Pokémon and
    Spikes, with the estimated knockouts removed. On top: P1's species and items, and P1-minus-P2
    move counts.
-3. **Player 1's history** (`src/history.py`). The win rate of P1's exact team in other battles, as
+3. **Player 1's history** (`history.py`). The win rate of P1's exact team in other battles, as
    an out-of-fold target encoding computed inside each CV fold.
-4. **Model** (`src/models.py`). LightGBM.
+4. **Model** (`models.py`). LightGBM.
 
 Every configuration is evaluated with the same 5-fold stratified CV, repeated 3 times. Differences
 are paired on the same folds, and ± is the corrected standard error.
@@ -63,6 +65,12 @@ The full numbers are in [outputs/kaggle/cv_report.md](outputs/kaggle/cv_report.m
 
 ## How to run
 
+The three final approaches now have matching folders under [`submissions/`](submissions/README.md).
+Use [`final_submissions.ipynb`](final_submissions.ipynb) as the single Kaggle entry notebook.
+It is currently a working draft: the saved V2 source is incomplete, and a fresh V5 run differs
+from its original submission in 43 of 5,000 predictions. The notebook checks these conditions
+and requires exact prediction matches before exporting the complete set.
+
 ```bash
 pip install -r requirements.txt
 kaggle competitions download -c fds-pokemon-battles-prediction-2026 -p data
@@ -88,7 +96,12 @@ pipeline.run(ablation=False)
 
 | path | content |
 |---|---|
-| `run.py`, `src/` | the pipeline |
+| `final_submissions.ipynb` | one Kaggle notebook for the three approaches; current reproduction issues are reported |
+| `submissions/01_hidden_ko_history/` | hidden-KO + history approach, original source and reference metadata |
+| `submissions/02_turn31_v5/` | turn-31 V5 approach, original source and reference metadata |
+| `submissions/03_turn31_v2/` | turn-31 V2 approach, original source and reference metadata |
+| `submission_tools/` | shared path adaptation, execution and CSV verification |
+| `run.py`, `src/` | compatibility entry points for the original first pipeline |
 | `outputs/kaggle/` | the run on Kaggle that produced the submission |
 | `docs/figures/` | the figures, and `make_figures.py` to redraw them |
 | `docs/uml/` | UML diagram of the battle JSON |
