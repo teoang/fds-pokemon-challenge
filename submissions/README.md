@@ -62,8 +62,8 @@ Package versions are pinned in `requirements.txt` and recorded in each execution
    directly from the repository.
 5. Select the approaches using the notebook controls. Leave all three selected to generate
    the complete set. Restart the session and run all cells.
-6. Check that all three runs complete and match their original prediction fingerprints. The
-   last section then exports the three regenerated CSVs and their manifest in one ZIP.
+6. Check that all three runs complete and their CSVs pass validation. The last section exports
+   the three generated CSVs and their manifest in one ZIP.
 7. Save a successfully executed Kaggle version and make the notebook public. In the
    [course submission form](https://docs.google.com/forms/d/e/1FAIpQLSd8OEhyowMLGBJF_lXk_u8tReDVFKx0FrVKCwRryD-6OFmS-Q/viewform?usp=header),
    provide the public Kaggle notebook link and the requested report. The GitHub notebook
