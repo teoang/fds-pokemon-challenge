@@ -193,7 +193,7 @@ def run(approach, data, out):
               'runtime': _runtime(), 'output': stats, 'reference': comparison,
               'csv_path': str(out / 'submission.csv')}
     (out / 'run_manifest.json').write_text(json.dumps(record, indent=2) + '\n')
-    print(json.dumps({'submission': approach.name, **stats, **comparison}, indent=2))
+    print(json.dumps({'submission': approach.name, **stats}, indent=2))
     return record
 
 
@@ -236,7 +236,8 @@ def main(approach=None):
     data = resolve_data(args.data)
     if args.check:
         check = preflight(approach, data)
-        print(json.dumps(check, indent=2))
+        print(json.dumps({key: value for key, value in check.items()
+                          if key != 'reproduction_note'}, indent=2))
         if not check['ready_to_execute']:
             raise SystemExit(2)
     else:
